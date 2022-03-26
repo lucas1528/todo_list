@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Cadastro{% endblock %}
+{% block conteudo %}
+    <form action="{{ url_for('cadastrar') }}" method="post">
+        <div class="mb-3">
+            <p>
+                <label class="form-label">Tarefa:</label>
+                <p>
+                    <textarea class="form-control" name="tarefa" rows="4" cols="50"></textarea>
+                </p>
+            </p>
+            <p>
+                <label class="form-label">Estado:</label>
+                <input class="form-check-input" type="checkbox" name="estado">
+            </p>
+            <p>
+                <button type="submit" class="btn btn-success"><i class="bi bi-check-lg"> Cadastrar</i></button>
+            </p>
+        </div>
+    </form>
+{% endblock %}

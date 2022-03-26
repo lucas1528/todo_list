@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Atualizar{% endblock %}
+{% block conteudo %}
+    <form action="{{ url_for('atualizar', id=tarefa.id) }}" method="post">
+        <div class="mb-3">
+        <p>
+            <label class="form-label">Tarefa:</label>
+            <p>
+                <textarea class="form-control" name="tarefa" rows="4" cols="50">{{ tarefa.tarefa }}</textarea>
+            </p>
+        </p>
+        <p>
+            <label class="form-label">Estado:</label>
+            {% if tarefa.estado == True %}
+                <input class="form-check-input" type="checkbox" name="estado" checked>
+            {% else %}
+                <input class="form-check-input" type="checkbox" name="estado">
+            {% endif %} 
+        </p>
+        <p>
+            <button type="submit" class="btn btn-primary"><i class="bi bi-pencil"> Atualizar</i></button>
+        </p>
+    </div>
+    </form>
+{% endblock %}

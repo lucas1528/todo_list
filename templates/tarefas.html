@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Tarefas{% endblock %}
+{% block conteudo %}
+
+        {% for tarefa in tarefas %}
+            <ul class="list-group">
+                <li class="list-group-item">
+                    {% if tarefa.estado == True %}
+                        <p style="text-decoration: line-through;">
+                            {{ tarefa.tarefa }}
+                        </p>
+                    {% else %}
+                        <p>
+                            {{ tarefa.tarefa }}
+                        </p>
+                    {% endif %}
+
+                    <p>
+                        <label>Estado: </label>
+                        {% if tarefa.estado == True %}
+                            Feito
+                        {% else %}
+                            Não feito
+                        {% endif %}
+                    </p>
+                    <p>
+                        <a href="{{ url_for('deletar', id=tarefa.id) }}"><button class="btn btn-danger"><i class="bi bi-x"> Deletar</i></button></a>
+                        <a href="{{ url_for('editar', id=tarefa.id) }}"><button class="btn btn-primary"><i class="bi bi-pencil"> Editar</i></button></a>
+                    </p>
+                </li>
+            </ul>
+        {% endfor %}
+
+{% endblock %}
